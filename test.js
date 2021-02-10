@@ -278,9 +278,9 @@ describe('pwa platform', () => {
 });
 
 describe('multi platform', () => {
-	test('(android, ios, pwa, blackberry10) - png file', async () => {
+	test('(android, ios) - png file', async () => {
 		const tempFile = tempy.file();
-		await execa('./cli.js', ['fixtures/icon.png', '-p', 'android', '-p', 'ios', '-p', 'pwa', '-p', 'blackberry10', '-o', tempFile]);
+		await execa('./cli.js', ['fixtures/icon.png', '-p', 'android', '-p', 'ios', '-o', tempFile]);
 		
 		const doesFileExist = await Promise.all([
 			pathExists(path.join(tempFile, 'android/mipmap-hdpi/icon.png')),
