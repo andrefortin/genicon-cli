@@ -27,6 +27,8 @@ $ genicon --help
     --out, -o           Output directory [Default: cwd]
 
   Examples
+    $ genicon icon.png -p=chrome -b=#00FF00
+      ✔  success
     $ genicon icon.png -p=android
       ✔  success
     $ genicon icon.png -p=android -p=ios -p=pwa

@@ -29,12 +29,7 @@ describe('android platform', () => {
 		await execa('./cli.js', ['fixtures/icon.png', '-p', 'android', '-o', tempFile]);
 
 		const doesFileExist = await Promise.all([
-			pathExists(path.join(tempFile, 'mipmap-ldpi/icon.png')),
-			pathExists(path.join(tempFile, 'mipmap-mdpi/icon.png')),
 			pathExists(path.join(tempFile, 'mipmap-hdpi/icon.png')),
-			pathExists(path.join(tempFile, 'mipmap-xhdpi/icon.png')),
-			pathExists(path.join(tempFile, 'mipmap-xxhdpi/icon.png')),
-			pathExists(path.join(tempFile, 'mipmap-xxxhdpi/icon.png')),
 		]);
 		let doesExist = true;
 		doesFileExist.map(item => {
@@ -51,12 +46,7 @@ describe('android platform', () => {
 		await execa('./cli.js', ['fixtures/icon.svg', '-p', 'android', '-o', tempFile]);
 
 		const doesFileExist = await Promise.all([
-			pathExists(path.join(tempFile, 'mipmap-ldpi/icon.png')),
-			pathExists(path.join(tempFile, 'mipmap-mdpi/icon.png')),
 			pathExists(path.join(tempFile, 'mipmap-hdpi/icon.png')),
-			pathExists(path.join(tempFile, 'mipmap-xhdpi/icon.png')),
-			pathExists(path.join(tempFile, 'mipmap-xxhdpi/icon.png')),
-			pathExists(path.join(tempFile, 'mipmap-xxxhdpi/icon.png')),
 		]);
 		let doesExist = true;
 		doesFileExist.map(item => {
@@ -117,10 +107,7 @@ describe('chrome platform', () => {
 		await execa('./cli.js', ['fixtures/icon.png', '-p', 'chrome', '-o', tempFile]);
 
 		const doesFileExist = await Promise.all([
-			pathExists(path.join(tempFile, 'icon-16.png')),
-			pathExists(path.join(tempFile, 'icon-32.png')),
 			pathExists(path.join(tempFile, 'icon-48.png')),
-			pathExists(path.join(tempFile, 'icon-128.png')),
 		]);
 		let doesExist = true;
 		doesFileExist.map(item => {
@@ -137,10 +124,43 @@ describe('chrome platform', () => {
 		await execa('./cli.js', ['fixtures/icon.svg', '-p', 'chrome', '-o', tempFile]);
 
 		const doesFileExist = await Promise.all([
-			pathExists(path.join(tempFile, 'icon-16.png')),
-			pathExists(path.join(tempFile, 'icon-32.png')),
 			pathExists(path.join(tempFile, 'icon-48.png')),
-			pathExists(path.join(tempFile, 'icon-128.png')),
+		]);
+		let doesExist = true;
+		doesFileExist.map(item => {
+			if (!item) {
+				doesExist = false;
+			}
+		});
+
+		expect(doesExist).toBe(true);
+	});
+});
+
+describe('firefox platform', () => {
+	test('firefox - png input', async () => {
+		const tempFile = tempy.file();
+		await execa('./cli.js', ['fixtures/icon.png', '-p', 'firefox', '-o', tempFile]);
+
+		const doesFileExist = await Promise.all([
+			pathExists(path.join(tempFile, 'icon-48.png')),
+		]);
+		let doesExist = true;
+		doesFileExist.map(item => {
+			if (!item) {
+				doesExist = false;
+			}
+		});
+
+		expect(doesExist).toBe(true);
+	});
+
+	test('firefox - svg input', async () => {
+		const tempFile = tempy.file();
+		await execa('./cli.js', ['fixtures/icon.svg', '-p', 'firefox', '-o', tempFile]);
+
+		const doesFileExist = await Promise.all([
+			pathExists(path.join(tempFile, 'icon-48.png')),
 		]);
 		let doesExist = true;
 		doesFileExist.map(item => {
@@ -160,25 +180,6 @@ describe('ios platform', () => {
 
 		const doesFileExist = await Promise.all([
 			pathExists(path.join(tempFile, 'icon.png')),
-			pathExists(path.join(tempFile, 'icon@2x.png')),
-			pathExists(path.join(tempFile, 'icon-20.png')),
-			pathExists(path.join(tempFile, 'icon-40.png')),
-			pathExists(path.join(tempFile, 'icon-40@2x.png')),
-			pathExists(path.join(tempFile, 'icon-40@3x.png')),
-			pathExists(path.join(tempFile, 'icon-1024.png')),
-			pathExists(path.join(tempFile, 'icon-50.png')),
-			pathExists(path.join(tempFile, 'icon-50@2x.png')),
-			pathExists(path.join(tempFile, 'icon-60.png')),
-			pathExists(path.join(tempFile, 'icon-60@2x.png')),
-			pathExists(path.join(tempFile, 'icon-60@3x.png')),
-			pathExists(path.join(tempFile, 'icon-72.png')),
-			pathExists(path.join(tempFile, 'icon-72@2x.png')),
-			pathExists(path.join(tempFile, 'icon-76.png')),
-			pathExists(path.join(tempFile, 'icon-76@2x.png')),
-			pathExists(path.join(tempFile, 'icon-83.5@2x.png')),
-			pathExists(path.join(tempFile, 'icon-small.png')),
-			pathExists(path.join(tempFile, 'icon-small@2x.png')),
-			pathExists(path.join(tempFile, 'icon-small@3x.png')),
 		]);
 		let doesExist = true;
 		doesFileExist.map(item => {
@@ -196,25 +197,6 @@ describe('ios platform', () => {
 
 		const doesFileExist = await Promise.all([
 			pathExists(path.join(tempFile, 'icon.png')),
-			pathExists(path.join(tempFile, 'icon@2x.png')),
-			pathExists(path.join(tempFile, 'icon-20.png')),
-			pathExists(path.join(tempFile, 'icon-40.png')),
-			pathExists(path.join(tempFile, 'icon-40@2x.png')),
-			pathExists(path.join(tempFile, 'icon-40@3x.png')),
-			pathExists(path.join(tempFile, 'icon-1024.png')),
-			pathExists(path.join(tempFile, 'icon-50.png')),
-			pathExists(path.join(tempFile, 'icon-50@2x.png')),
-			pathExists(path.join(tempFile, 'icon-60.png')),
-			pathExists(path.join(tempFile, 'icon-60@2x.png')),
-			pathExists(path.join(tempFile, 'icon-60@3x.png')),
-			pathExists(path.join(tempFile, 'icon-72.png')),
-			pathExists(path.join(tempFile, 'icon-72@2x.png')),
-			pathExists(path.join(tempFile, 'icon-76.png')),
-			pathExists(path.join(tempFile, 'icon-76@2x.png')),
-			pathExists(path.join(tempFile, 'icon-83.5@2x.png')),
-			pathExists(path.join(tempFile, 'icon-small.png')),
-			pathExists(path.join(tempFile, 'icon-small@2x.png')),
-			pathExists(path.join(tempFile, 'icon-small@3x.png')),
 		]);
 		let doesExist = true;
 		doesFileExist.map(item => {
@@ -233,14 +215,7 @@ describe('pwa platform', () => {
 		await execa('./cli.js', ['fixtures/icon.png', '-p', 'pwa', '-o', tempFile]);
 
 		const doesFileExist = await Promise.all([
-			pathExists(path.join(tempFile, 'icon-72x72.png')),
-			pathExists(path.join(tempFile, 'icon-96x96.png')),
 			pathExists(path.join(tempFile, 'icon-128x128.png')),
-			pathExists(path.join(tempFile, 'icon-144x144.png')),
-			pathExists(path.join(tempFile, 'icon-152x152.png')),
-			pathExists(path.join(tempFile, 'icon-192x192.png')),
-			pathExists(path.join(tempFile, 'icon-384x384.png')),
-			pathExists(path.join(tempFile, 'icon-512x512.png')),
 		]);
 		let doesExist = true;
 		doesFileExist.map(item => {
@@ -257,14 +232,7 @@ describe('pwa platform', () => {
 		await execa('./cli.js', ['fixtures/icon.svg', '-p', 'pwa', '-o', tempFile]);
 
 		const doesFileExist = await Promise.all([
-			pathExists(path.join(tempFile, 'icon-72x72.png')),
-			pathExists(path.join(tempFile, 'icon-96x96.png')),
 			pathExists(path.join(tempFile, 'icon-128x128.png')),
-			pathExists(path.join(tempFile, 'icon-144x144.png')),
-			pathExists(path.join(tempFile, 'icon-152x152.png')),
-			pathExists(path.join(tempFile, 'icon-192x192.png')),
-			pathExists(path.join(tempFile, 'icon-384x384.png')),
-			pathExists(path.join(tempFile, 'icon-512x512.png')),
 		]);
 		let doesExist = true;
 		doesFileExist.map(item => {
