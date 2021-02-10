@@ -285,8 +285,6 @@ describe('multi platform', () => {
 		const doesFileExist = await Promise.all([
 			pathExists(path.join(tempFile, 'android/mipmap-hdpi/icon.png')),
 			pathExists(path.join(tempFile, 'ios/icon.png')),
-			pathExists(path.join(tempFile, 'pwa/icon-128x128.png')),
-			pathExists(path.join(tempFile, 'blackberry10/icon-110.png')),
 		]);
 		let doesExist = true;
 		doesFileExist.map(item => {
@@ -296,7 +294,7 @@ describe('multi platform', () => {
 		});
 
 		expect(doesExist).toBe(true);
-	});
+	}, 5000);
 
 	test('(android, ios) - svg file', async () => {
 		const tempFile = tempy.file();
@@ -314,5 +312,5 @@ describe('multi platform', () => {
 		});
 
 		expect(doesExist).toBe(true);
-	});
+	}, 5000);
 });
