@@ -1,6 +1,6 @@
 {
 	"name": "genicon-cli",
-	"version": "1.0.0",
+	"version": "1.0.2",
 	"description": "Generate icons for mobile apps and broswer extensions/plugins.",
 	"license": "MIT",
 	"repository": "https://github.com/andrefortin/genicon-cli",
@@ -17,10 +17,10 @@
 		}
 	],
 	"bin": {
-		"mobicon": "cli.js"
+		"genicon": "cli.js"
 	},
 	"engines": {
-		"node": ">8"
+		"node": ">=10"
 	},
 	"scripts": {
 		"test": "jest"
@@ -37,7 +37,14 @@
 		"icon",
 		"generator",
 		"mobicon",
+		"mobicon-cli",
+		"genicon",
 		"cordova",
+		"chrome",
+		"chromium",
+		"browser",
+		"extension",
+		"plugin",
 		"android",
 		"ios",
 		"blackberry10"

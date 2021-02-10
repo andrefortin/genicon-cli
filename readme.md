@@ -1,6 +1,6 @@
 # genicon-cli [![Build Status](https://travis-ci.com/andrefortin/genicon-cli.svg?branch=master)](https://travis-ci.com/andrefortin/genicon-cli)
 
-> Generate icons for mobile apps and broswer extensions/plugins
+> Generate icons for mobile apps and browser extensions/plugins
 
 ## Install
 
