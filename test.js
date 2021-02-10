@@ -298,13 +298,13 @@ describe('multi platform', () => {
 		expect(doesExist).toBe(true);
 	});
 
-	test('(android, ios, pwa, blackberry10) - svg file', async () => {
+	test('(android, ios) - svg file', async () => {
 		const tempFile = tempy.file();
-		await execa('./cli.js', ['fixtures/icon.svg', '-p', 'android', '-p', 'ios', '-p', 'pwa', '-p', 'blackberry10', '-o', tempFile]);
+		await execa('./cli.js', ['fixtures/icon.svg', '-p', 'android', '-p', 'ios', '-o', tempFile]);
 		
 		const doesFileExist = await Promise.all([
-			pathExists(path.join(tempFile, 'ios/icon.png')),
 			pathExists(path.join(tempFile, 'android/mipmap-hdpi/icon.png')),
+			pathExists(path.join(tempFile, 'ios/icon.png')),
 		]);
 		let doesExist = true;
 		doesFileExist.map(item => {
